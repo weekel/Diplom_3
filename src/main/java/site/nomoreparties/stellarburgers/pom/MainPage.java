@@ -3,6 +3,9 @@ package site.nomoreparties.stellarburgers.pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import site.nomoreparties.stellarburgers.utils.WaitUtils;
+
+import static site.nomoreparties.stellarburgers.config.Url.PROFILE_PAGE_URL;
 
 public class MainPage {
 
@@ -37,31 +40,15 @@ public class MainPage {
     @Step("Клик по кнопке 'Личный кабинет' на главной странице")
     public void clickPersonalCabinetButton() {
         driver.findElement(personalCabinetButton).click();
+        WaitUtils.waitForUrl(driver, PROFILE_PAGE_URL);
     }
 
     @Step("Проверка отображения кнопки 'Оформить заказ'")
     public boolean isPlaceOrderButtonVisible() {
-        return driver.findElement(By.xpath("//button[text()='Оформить заказ']")).isDisplayed();
+        return driver.findElement(placeOrderButton).isDisplayed();
     }
 
     //Методы для тестирования переходов между разделами
-
-    public By getBunsConstructorTab() {
-        return bunsConstructorTab;
-    }
-
-    public By getBunsTabSelected() {
-        return bunsTabSelected;
-    }
-
-    public By getSaucesTabSelected() {
-        return saucesTabSelected;
-    }
-
-    public By getFillingsTabSelected() {
-        return fillingsTabSelected;
-    }
-
     @Step("Клик по вкладке 'Булки' в конструкторе")
     public void clickBunsConstructorTab() {
         driver.findElement(bunsConstructorTab).click();
@@ -79,16 +66,19 @@ public class MainPage {
 
     @Step("Проверка, что вкладка 'Булки' выбрана")
     public boolean isBunTabSelected() {
+        WaitUtils.waitForElementVisible(driver, bunsTabSelected);
         return driver.findElement(bunsTabSelected).isDisplayed();
     }
 
     @Step("Проверка, что вкладка 'Соусы' выбрана")
     public boolean isSaucesTabSelected() {
+        WaitUtils.waitForElementVisible(driver, saucesTabSelected);
         return driver.findElement(saucesTabSelected).isDisplayed();
     }
 
     @Step("Проверка, что вкладка 'Начинки' выбрана")
     public boolean isFillingsTabSelected() {
+        WaitUtils.waitForElementVisible(driver, fillingsTabSelected);
         return driver.findElement(fillingsTabSelected).isDisplayed();
     }
 }

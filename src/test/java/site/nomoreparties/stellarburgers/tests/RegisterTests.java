@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pom.RegisterPage;
-import site.nomoreparties.stellarburgers.utils.WaitUtils;
 
 import static site.nomoreparties.stellarburgers.config.Url.LOGIN_PAGE_URL;
 import static site.nomoreparties.stellarburgers.config.Url.REGISTER_PAGE_URL;
@@ -42,7 +41,6 @@ public class RegisterTests extends BaseTest{
         password = faker.internet().password();
         registerPage.register(name, email, password);
 
-        WaitUtils.waitForUrl(driver, LOGIN_PAGE_URL);
 
         expectedUrl = LOGIN_PAGE_URL;
         actualUrl = driver.getCurrentUrl();
@@ -56,8 +54,6 @@ public class RegisterTests extends BaseTest{
     public void registrationWithShortPasswordShowsError() {
         password = faker.internet().password(1, 5);
         registerPage.register(name, email, password);
-
-        WaitUtils.waitForElementVisible(driver, registerPage.getPasswordError());
 
         Assert.assertTrue("Ожидалось сообщение об ошибке 'Некорректный пароль'", registerPage.isPasswordErrorDisplayed());
     }

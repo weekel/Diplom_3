@@ -49,7 +49,6 @@ public class PersonalCabinetTests extends BaseTest {
     @Description("Проверяет, что авторизованный пользователь попадает в личный кабинет при клике на кнопку 'Личный кабинет'")
     public void clickPersonalCabinetButtonOpensProfilePage() {
         mainPage.clickPersonalCabinetButton();
-        WaitUtils.waitForUrl(driver, PROFILE_PAGE_URL);
 
         expectedUrl = PROFILE_PAGE_URL;
         actualUrl = driver.getCurrentUrl();
@@ -88,10 +87,8 @@ public class PersonalCabinetTests extends BaseTest {
     @Description("Проверяет, что пользователь выходит из аккаунта по кнопке 'Выход' в личном кабинете и попадает на страницу логина")
     public void logoutFromProfilePageRedirectsToLogin() {
         mainPage.clickPersonalCabinetButton();
-        WaitUtils.waitForElementVisible(driver, profilePage.getLogoutButton());
         profilePage.clickLogoutButton();
 
-        WaitUtils.waitForUrl(driver, LOGIN_PAGE_URL);
         expectedUrl = LOGIN_PAGE_URL;
         actualUrl = driver.getCurrentUrl();
 

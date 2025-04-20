@@ -3,6 +3,9 @@ package site.nomoreparties.stellarburgers.pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import site.nomoreparties.stellarburgers.utils.WaitUtils;
+
+import static site.nomoreparties.stellarburgers.config.Url.MAIN_PAGE_URL;
 
 public class LoginPage {
 
@@ -12,8 +15,6 @@ public class LoginPage {
     private final By emailInput = By.xpath("//input[@name='name']");
     private final By passwordInput = By.xpath("//input[@type='password']");
     private final By loginButton = By.xpath("//button[text()='Войти']");
-
-
 
 
     public LoginPage(WebDriver driver) {
@@ -38,7 +39,6 @@ public class LoginPage {
         enterEmail(email);
         enterPassword(password);
         clickLoginButton();
+        WaitUtils.waitForUrl(driver, MAIN_PAGE_URL);
     }
-
-
 }

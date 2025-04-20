@@ -10,7 +10,6 @@ import site.nomoreparties.stellarburgers.pom.ForgotPasswordPage;
 import site.nomoreparties.stellarburgers.pom.LoginPage;
 import site.nomoreparties.stellarburgers.pom.MainPage;
 import site.nomoreparties.stellarburgers.pom.RegisterPage;
-import site.nomoreparties.stellarburgers.utils.WaitUtils;
 
 import static site.nomoreparties.stellarburgers.config.Url.*;
 
@@ -49,7 +48,6 @@ public class LoginTests extends BaseTest{
         mainPage.clickLoginButtonOnPage();
 
         loginPage.login(email, password);
-        WaitUtils.waitForUrl(driver, MAIN_PAGE_URL);
         Assert.assertTrue("Кнопка 'Оформить заказ' не отображается — возможно, вход не выполнен", mainPage.isPlaceOrderButtonVisible());
     }
 
@@ -61,7 +59,6 @@ public class LoginTests extends BaseTest{
         mainPage.clickPersonalCabinetButton();
 
         loginPage.login(email, password);
-        WaitUtils.waitForUrl(driver, MAIN_PAGE_URL);
         Assert.assertTrue("Кнопка 'Оформить заказ' не отображается — возможно, вход не выполнен", mainPage.isPlaceOrderButtonVisible());
     }
 
@@ -73,7 +70,6 @@ public class LoginTests extends BaseTest{
         registerPage.clickLoginLink();
 
         loginPage.login(email, password);
-        WaitUtils.waitForUrl(driver, MAIN_PAGE_URL);
         Assert.assertTrue("Кнопка 'Оформить заказ' не отображается — возможно, вход не выполнен", mainPage.isPlaceOrderButtonVisible());
     }
 
@@ -85,7 +81,6 @@ public class LoginTests extends BaseTest{
         forgotPasswordPage.clickLoginLink();
 
         loginPage.login(email, password);
-        WaitUtils.waitForUrl(driver, MAIN_PAGE_URL);
         Assert.assertTrue("Кнопка 'Оформить заказ' не отображается — возможно, вход не выполнен", mainPage.isPlaceOrderButtonVisible());
     }
 }

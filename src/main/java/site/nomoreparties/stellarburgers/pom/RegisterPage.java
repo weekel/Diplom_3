@@ -3,6 +3,8 @@ package site.nomoreparties.stellarburgers.pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import site.nomoreparties.stellarburgers.utils.WaitUtils;
+
 
 public class RegisterPage {
 
@@ -20,10 +22,6 @@ public class RegisterPage {
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public By getPasswordError() {
-        return passwordError;
     }
 
     //Методы для регистрации
@@ -53,10 +51,12 @@ public class RegisterPage {
         enterEmail(email);
         enterPassword(password);
         clickRegisterButton();
+        WaitUtils.waitForFiveSeconds();
     }
 
     @Step("Проверка отображения ошибки: 'Некорректный пароль'")
     public boolean isPasswordErrorDisplayed() {
+        WaitUtils.waitForElementVisible(driver, passwordError);
         return driver.findElement(passwordError).isDisplayed();
     }
 

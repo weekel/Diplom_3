@@ -3,6 +3,9 @@ package site.nomoreparties.stellarburgers.pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import site.nomoreparties.stellarburgers.utils.WaitUtils;
+
+import static site.nomoreparties.stellarburgers.config.Url.LOGIN_PAGE_URL;
 
 public class ProfilePage {
 
@@ -31,12 +34,10 @@ public class ProfilePage {
     }
 
     //Метод для выхода из аккаунта
-    public By getLogoutButton() {
-        return logoutButton;
-    }
-
     @Step("Клик по кнопке 'Выйти' в личном кабинете")
     public void clickLogoutButton() {
+        WaitUtils.waitForElementVisible(driver, logoutButton);
         driver.findElement(logoutButton).click();
+        WaitUtils.waitForUrl(driver, LOGIN_PAGE_URL);
     }
 }
