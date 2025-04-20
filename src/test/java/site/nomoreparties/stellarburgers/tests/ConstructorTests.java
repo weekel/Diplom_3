@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pom.MainPage;
+import site.nomoreparties.stellarburgers.utils.WaitUtils;
 
 import static site.nomoreparties.stellarburgers.config.Url.MAIN_PAGE_URL;
 
@@ -26,7 +27,7 @@ public class ConstructorTests extends BaseTest{
         mainPage.clickSaucesConstructorTab();
 
         mainPage.clickBunsConstructorTab();
-
+        WaitUtils.waitForElementVisible(driver, mainPage.getBunsTabSelected());
         Assert.assertTrue("Таб 'Булки' не стал активным", mainPage.isBunTabSelected());
     }
 
@@ -36,6 +37,8 @@ public class ConstructorTests extends BaseTest{
     public void clickSaucesButtonSelectsSaucesTab() {
         mainPage.clickSaucesConstructorTab();
 
+        WaitUtils.waitForElementVisible(driver, mainPage.getSaucesTabSelected());
+
         Assert.assertTrue("Таб 'Соусы' не стал активным", mainPage.isSaucesTabSelected());
     }
 
@@ -44,6 +47,8 @@ public class ConstructorTests extends BaseTest{
     @Description("Проверяет, что при клике на таб 'Начинки' он становится активным")
     public void clickFillingsButtonSelectsFillingsTab() {
         mainPage.clickFillingsConstructorTab();
+
+        WaitUtils.waitForElementVisible(driver, mainPage.getFillingsTabSelected());
 
         Assert.assertTrue("Таб 'Начинки' не стал активным", mainPage.isFillingsTabSelected());
     }

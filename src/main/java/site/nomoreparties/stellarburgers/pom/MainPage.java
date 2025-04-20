@@ -50,6 +50,18 @@ public class MainPage {
         return bunsConstructorTab;
     }
 
+    public By getBunsTabSelected() {
+        return bunsTabSelected;
+    }
+
+    public By getSaucesTabSelected() {
+        return saucesTabSelected;
+    }
+
+    public By getFillingsTabSelected() {
+        return fillingsTabSelected;
+    }
+
     @Step("Клик по вкладке 'Булки' в конструкторе")
     public void clickBunsConstructorTab() {
         driver.findElement(bunsConstructorTab).click();
