@@ -1,55 +1,69 @@
-## Автотесты для веб-приложения Stellar Burgers
+# 🖥️ Stellar Burgers UI Tests
 
-### Описание
-
-Проект содержит автотесты для проверки основных пользовательских сценариев веб-приложения [Stellar Burgers](https://stellarburgers.nomoreparties.site/), реализованные с использованием Java, JUnit4, Selenium и Allure.
-
-Тесты написаны по паттерну **Page Object**, покрывают сценарии регистрации, логина, навигации по интерфейсу и выхода из аккаунта.
+This project contains **automated UI tests** for the Stellar Burgers web application.  
+It validates user-facing features such as authentication, navigation, and order placement using Selenium WebDriver.
 
 ---
 
-### Технологии
+## 🧭 Project Structure
 
-- Java 11
-- Maven
-- Selenium WebDriver
-- JUnit 4
-- Allure Report
-- JavaFaker
-- Chrome / Yandex Browser
+- `src/main/java` – Page Object classes representing UI components
+- `src/test/java` – UI test cases organized by functionality
+- `pom.xml` – Maven project file
+- `allure-report/chrome/` – Allure HTML report for Chrome browser
 
 ---
 
-### Покрытие тестами
+## ✅ Technologies Used
 
-| Функциональность               | Тест-класс              |
-|--------------------------------|--------------------------|
-| Регистрация                    | `RegisterTests`          |
-| Логин                         | `LoginTests`             |
-| Навигация (Конструктор)       | `ConstructorTests`       |
-| Личный кабинет и выход        | `PersonalCabinetTests`   |
+- **Java 11**
+- **JUnit 4** — for test structure
+- **Selenium WebDriver** — for browser automation
+- **Allure** — for test reporting
+- **Faker** — for dynamic test data generation
+- **Maven** — for dependency and build management
 
 ---
 
-### Запуск тестов
+## 🚀 How to Run Tests
+
+Make sure you have **Java 11+**, **Maven**, and **ChromeDriver** installed. Then run:
 
 ```bash
-# Очистить и запустить тесты в Chrome
 mvn clean test
+```
 
-# Запустить в Яндекс.Браузере
-mvn clean test -Dbrowser=yandex
+To generate the Allure report:
+
+```bash
+mvn allure:report
+```
+
+To view the report locally:
+
+```bash
+mvn allure:serve
 ```
 
 ---
 
-### Генерация Allure-отчета
+## 🧪 Features Tested
 
-```bash
-# 1. Запуск тестов с генерацией результатов
-mvn clean test
+- User registration and login
+- Page navigation (constructor, profile, home)
+- Placing and verifying orders
+- Tab switching for burger ingredients
+- UI validations and negative scenarios
 
-# 2. Генерация и запуск отчета
-allure serve target/allure-results
-```
+---
 
+## 🌐 Browser Support
+
+Tests are configured for **Google Chrome**.  
+Optional support for **Yandex Browser** can be added using custom WebDriver settings.
+
+---
+
+## 📄 License
+
+This project is developed for educational purposes only.
